@@ -1,2 +1,2 @@
 # somlabs-extra
-SOMLabs Extra Community Yocto BSP
+SOMLabs Extra Community source code for Yocto

@@ -24,7 +24,6 @@ exit_message ()
 {
    echo "To return to this build environment later please run:"
    echo "    source setup-environment <build_dir>"
-
 }
 
 usage()
@@ -38,10 +37,8 @@ echo "
 "
 }
 
-
 clean_up()
 {
-
     unset CWD BUILD_DIR BACKEND FSLDISTRO
     unset fsl_setup_help fsl_setup_error fsl_setup_flag
     unset usage clean_up
@@ -81,7 +78,6 @@ do
            ;;
     esac
 done
-
 
 if [ -z "$DISTRO" ]; then
     if [ -z "$FSLDISTRO" ]; then
@@ -147,23 +143,21 @@ else
     cp $BUILD_DIR/conf/local.conf.org $BUILD_DIR/conf/local.conf
 fi
 
-
 if [ ! -e $BUILD_DIR/conf/bblayers.conf.org ]; then
     cp $BUILD_DIR/conf/bblayers.conf $BUILD_DIR/conf/bblayers.conf.org
 else
     cp $BUILD_DIR/conf/bblayers.conf.org $BUILD_DIR/conf/bblayers.conf
 fi
 
-# Remove layers from bblayer.conf
+# Remove unused layers from bblayer.conf
 sed -i '/meta-multimedia/d' $BUILD_DIR/conf/bblayers.conf
 
-# Add project layers to bblayers.conf
+# Add required layers to bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-openembedded/meta-networking \"" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-openembedded/meta-python \"" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-openembedded/meta-filesystems \"" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-qt5 \"" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \" \${BSPDIR}/sources/meta-somlabs \"" >> $BUILD_DIR/conf/bblayers.conf
-echo "BBLAYERS += \" \${BSPDIR}/sources/meta-somlabs-extra \"" >> $BUILD_DIR/conf/bblayers.conf
 
 # Add custom variables to local.conf
 echo "" >> $BUILD_DIR/conf/local.conf

@@ -28,12 +28,6 @@ if [ "$(whoami)" = "root" ]; then
     echo "ERROR: Do not use the BSP as root. Exiting..."
 fi
 
-if [ ! -e $1/conf/local.conf ]; then
-    echo -e "ERROR: You must create /conf/local.conf file."
-    clean_up
-    return 1
-fi
-
 OEROOT=$PWD/sources/poky
 
 . $OEROOT/oe-init-build-env $CWD/$1 > /dev/null
@@ -41,5 +35,21 @@ OEROOT=$PWD/sources/poky
 # Clean up PATH, because if it includes tokens to current directories somehow,
 # wrong binaries can be used instead of the expected ones during task execution
 export PATH="`echo $PATH | sed 's/\(:.\|:\)*:/:/g;s/^.\?://;s/:.\?$//'`"
+
+# Generate the local.conf based on the Somlabs layer defaults
+if [ -e ../sources/meta-somlabs-extra/conf/local.conf ] && [ -e ../sources/meta-somlabs-extra/conf/bblayers.conf ]; then
+    if [ -e conf/local.conf ]; then
+	cp conf/local.conf conf/local.conf.old
+    fi
+    if [ -e conf/bblayers.conf ]; then
+	cp conf/bblayers.conf conf/bblayers.conf.old
+    fi
+    cp ../sources/meta-somlabs-extra/conf/local.conf conf/local.conf
+    cp ../sources/meta-somlabs-extra/conf/bblayers.conf conf/bblayers.conf
+else
+    echo -e "ERROR: Meta layer Somlabs-Extra is empty"
+    clean_up
+    return 1
+fi
 
 clean_up

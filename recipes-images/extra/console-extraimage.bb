@@ -3,8 +3,9 @@ LICENSE = "MIT"
 
 inherit core-image
 
-GLIBC_GENERATE_LOCALES += "en_US.utf8"
-IMAGE_LINGUAS = "en-us.utf8"
+GLIBC_GENERATE_LOCALES = "en_GB.UTF-8 en_US.UTF-8"
+IMAGE_LINGUAS ?= "en-gb"
+LIMIT_BUILT_LOCALES ?= "POSIX en_GB"
 
 NETWORK_APP = " \
     openssh \

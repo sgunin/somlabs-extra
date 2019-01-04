@@ -7,8 +7,8 @@ GLIBC_GENERATE_LOCALES += "en_US.utf8"
 IMAGE_LINGUAS = "en-us.utf8"
 
 NETWORK_APP = " \
-    openssh
-    openssh-keygen
+    openssh \
+    openssh-keygen \
     openssh-sftp-server \
 "
 

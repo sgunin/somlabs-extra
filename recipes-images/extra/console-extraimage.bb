@@ -38,6 +38,10 @@ UTILITIES_INSTALL = " \
     openssh-sftp \
     resize-rootfs \
     ppp \
+    rsync \
+    ntp \
+    cronie \
+    logrotate \
 "
 
 TSLIB = " \
@@ -79,3 +83,6 @@ TOOLCHAIN_HOST_TASK_append = " nativesdk-cmake"
 
 DISTRO_FEATURES_remove = " x11 wayland opengl pulseaudio opengles egl xcb "
 PACKAGECONFIG_DISTRO_append_pn_qtbase = " linuxfb tslib "
+
+INHERIT += "extrausers"
+EXTRA_USERS_PARAMS = "usermod -P password root;"

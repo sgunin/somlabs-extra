@@ -5,7 +5,7 @@ require console-extraimage.bb
 DEVELOPMENT_TOOLS = " \
     tools-sdk \	
     tools-debug \
-    tools-profile \ 	
+    tools-profile \
 "
 
 ECLIPSE_TOOLS = " \
@@ -24,3 +24,5 @@ EXTRA_IMAGE_FEATURES += " \
   ${DEVELOPMENT_TOOLS} \
   ${DEVELOPMENT_PACKAGES} \
 "
+
+

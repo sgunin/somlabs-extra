@@ -25,7 +25,7 @@ SYSTEM_TOOLS_INSTALL = " \
 KERNEL_EXTRA_INSTALL = " \
     kernel-devicetree \
     kernel-modules \
-    firmware-imx-brcm \
+    murata-fwmac-fw \
  "
 
 UTILITIES_INSTALL = " \
@@ -38,6 +38,8 @@ UTILITIES_INSTALL = " \
     openssh-sftp \
     resize-rootfs \
     ppp \
+    rng-tools \
+    util-linux \
     rsync \
     ntp \
     cronie \
@@ -80,7 +82,6 @@ IMAGE_INSTALL += " \
 #Always add cmake to sdk
 TOOLCHAIN_HOST_TASK_append = " nativesdk-cmake"
 
-DISTRO_FEATURES_remove = " x11 wayland opengl pulseaudio opengles egl xcb "
 PACKAGECONFIG_DISTRO_append_pn_qtbase = " linuxfb tslib "
 
 INHERIT += "extrausers"

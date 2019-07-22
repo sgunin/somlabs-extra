@@ -84,5 +84,12 @@ TOOLCHAIN_HOST_TASK_append = " nativesdk-cmake"
 
 PACKAGECONFIG_DISTRO_append_pn_qtbase = " linuxfb tslib "
 
-INHERIT += "extrausers"
-EXTRA_USERS_PARAMS = "usermod -P password root;"
+LICENSE_FLAGS_WHITELIST += "commercial_mplayer2"
+LICENSE_FLAGS_WHITELIST += "mplayer2"
+
+IMAGE_INSTALL += "ffmpeg"
+
+inherit extrausers
+EXTRA_USERS_PARAMS = "\
+	usermod -P ${SOMLABS_EXTRA_ROOT_PWD} root; \
+	"

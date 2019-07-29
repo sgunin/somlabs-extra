@@ -90,6 +90,8 @@ LICENSE_FLAGS_WHITELIST += "mplayer2"
 IMAGE_INSTALL += "ffmpeg"
 
 inherit extrausers
-EXTRA_USERS_PARAMS = "\
+
+EXTRA_USERS_PARAMS = " \
+	useradd -m -U -P ${SOMLABS_EXTRA_ROOT_PWD} -G sudo sg; \
 	usermod -P ${SOMLABS_EXTRA_ROOT_PWD} root; \
 	"

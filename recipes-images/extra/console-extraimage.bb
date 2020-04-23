@@ -25,7 +25,6 @@ SYSTEM_TOOLS_INSTALL = " \
 KERNEL_EXTRA_INSTALL = " \
     kernel-devicetree \
     kernel-modules \
-    murata-fwmac-fw \
  "
 
 UTILITIES_INSTALL = " \
